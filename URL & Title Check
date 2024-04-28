@@ -1,0 +1,50 @@
+package automationclass;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+
+public class login {
+
+	public static void main(String[] args) {
+
+		//Driver Initialization
+		WebDriverManager.firefoxdriver().setup();
+		WebDriver driver = new FirefoxDriver();
+		
+		//Window & Link
+				driver.get("https://www.saucedemo.com/");
+				//driver.manage().window().maximize();
+				driver.manage().window().minimize();
+				
+				//Title Check
+				String ExpectedTitle = "Swag Labs";
+				String ActualTitle = driver.getTitle();
+				//System.out.println(ActualTitle);
+				if (ActualTitle.equals(ExpectedTitle)) {
+					System.out.println("Title Match");
+				}
+				else {
+					System.out.println("Not Match");
+				}
+	
+				Assert.assertEquals(ActualTitle, ExpectedTitle, "Conditions True");
+				
+//				URL Check
+				
+				String ExpectedUrl = "https://www.saucedemo.com/";
+				String ActualUrl = driver.getCurrentUrl();
+					//System.out.println(ActualUrl);
+				
+				if (ActualUrl.equals(ExpectedUrl)) {
+					System.out.println("Url Match");
+				}
+				else {
+					System.out.println("Not Match");
+				}
+				Assert.assertEquals(ActualUrl, ExpectedUrl, "Conditions True");
+				
+	}
+
+}
