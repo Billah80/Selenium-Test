@@ -1,0 +1,31 @@
+package automationclass;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+
+public class login {
+
+	public static void main(String[] args) {
+
+		//Driver Initialization
+		WebDriverManager.firefoxdriver().setup();
+		WebDriver driver = new FirefoxDriver();
+		
+		//Window & Link
+				driver.get("https://eticket.railway.gov.bd/login");
+				driver.manage().window().maximize();
+				
+				//RailwayLogin
+				
+				driver.findElement(By.id("mobile_number")).sendKeys("01580470685");
+				driver.findElement(By.id("password")).sendKeys("tam123tas");
+				driver.findElement(By.className("login-form-submit-btn")).click();
+
+				
+	}
+
+}
